@@ -1,3 +1,9 @@
+# PROJECT SPECIFIC FILE IGNORES
+# -----------------------------
+synology/config
+
+# GENERIC IGNORES
+# ---------------
 # Logs
 logs
 *.log
@@ -134,3 +140,4 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
