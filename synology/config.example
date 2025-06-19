@@ -1,0 +1,41 @@
+# CONFIG
+# ------
+# - this file needs to be placed in the same folder as the sync.sh folder
+# - it will be parsed when the sync script runs and the variables will be automatically leveraged
+# - we don't want to include any sensitive information in GitHub or in places where multiple people
+#   might have access to, to reduce liability
+# - the version of this config file w/ all variables filled in is saved in 1Password for now
+# - to use, make a copy of this file and name it config (w/o extension)
+
+# Configuration Variables
+# -------------
+# DEVELOPMENT_FOLDER: change this path to an absolute path of your dev folder
+DEVELOPMENT_FOLDER=""
+# DEVELOPMENT_MODE: change to true if developing locally
+DEVELOPMENT_MODE=false
+# CURRENT_OS: this variable will either be Darwin (macOS) or Linux
+# - required to get the script to also run on macOS for local development
+CURRENT_OS=`uname`
+# FTP_PATH: Same path for uploading files for all projects
+# - this will change only if indicated by Teletrans, but might also require script changes
+FTP_EXTERNAL_PATH="ftp://dipftp.teletrans.ro"
+# Pushover Credentials
+PUSHOVER_TOKEN=""
+PUSHOVER_USER=""
+PUSHOVER_URL="https://api.pushover.net/1/messages.json"
+
+# Projects Setup
+# --------------
+# To add a new project, append a new line in the below config array, as follows:
+# - "PROJECT_FOLDER_NAME; FILE_IDENTIFIER; CREDENTIALS"
+# - PROJECT_FOLDER_NAME: the name of the folder you've already created inside /volume1/Teletrans/ dir
+#   - WARNING: make sure that the folder name does not contain any spaces or non-alphanumeric characters
+# - FILE_IDENTIFIER: the unique ID used in the filename to differentiate between projects:
+#   - e.g. for BabaAna, the filename: %Y%m%d_DAYAHEAD_CEF_BAB_00.csv, so the ID is CEF_BAB
+# - CREDENTIALS: the user and password, separated by the ':' character
+#   - WARNING: make sure that the credentials don't feature the ';' character as this will break the script
+export FTP_PROJECTS=(
+    "PROJECT_FOLDER_NAME; PROJECT_ID; USER:PASS"
+)
+
+# vim:syntax=sh ft=sh
