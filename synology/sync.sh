@@ -127,10 +127,10 @@ fi
 message=${message//'\n'/
 }
 
-for pushover_config in "${PUSHOVER_CONFIGS[@]}"; do
-  credential=(${pushover_config//,/})
-  user=${credential[0]}
-  token="${credential[1]}"
+for config in "${PUSHOVER_CONFIGS[@]}"; do
+  credentials=(${config//,/ })
+  user="${credentials[0]}"
+  token="${credentials[1]}"
 
   # check if config specs have been parsed correctly or skip this config
   if [ -n "${user}" ] && [ -n "${token}" ]; then
