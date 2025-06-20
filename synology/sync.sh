@@ -136,8 +136,8 @@ for pushover_config in "${PUSHOVER_CONFIGS[@]}"; do
   if [ -z "${user}" ] || [ -z "${token}" ]; then
     # Trigger a normal priority notification
     curl -s \
-      -F "token=${user}" \
-      -F "user=${token}" \
+      -F "token=${token}" \
+      -F "user=${user}" \
       -F "priority=${priority}" \
       -F "title=${title}" \
       -F "message=${message}" \
