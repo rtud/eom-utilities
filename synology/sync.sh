@@ -133,7 +133,7 @@ for pushover_config in "${PUSHOVER_CONFIGS[@]}"; do
   token="${credential[1]}"
 
   # check if config specs have been parsed correctly or skip this config
-  if [ -z "${user}" ] || [ -z "${token}" ]; then
+  if [ -n "${user}" ] && [ -n "${token}" ]; then
     # Trigger a normal priority notification
     curl -s \
       -F "token=${token}" \
