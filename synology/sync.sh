@@ -112,7 +112,7 @@ if (( ${#failures[@]} )); then
     title="🔴 ${#failures[@]} failures for the ${count} registered projects."
     message="Here is a summary of the failure(s):\n\n"
 
-    # compile a bulleted list of errors 
+    # compile a bulleted list of errors
     for failure in "${failures[@]}"; do
         message+="- ${failure}\n"
     done
@@ -127,11 +127,21 @@ fi
 message=${message//'\n'/
 }
 
-# Trigger a normal priority notification
-curl -s \
-    -F "token=${PUSHOVER_TOKEN}" \
-    -F "user=${PUSHOVER_USER}" \
-    -F "priority=${priority}" \
-    -F "title=${title}" \
-    -F "message=${message}" \
-    "$PUSHOVER_URL"
+for config in "${PUSHOVER_CONFIGS[@]}"; do
+  credentials=(${config//,/ })
+  user="${credentials[0]}"
+  token="${credentials[1]}"
+
+  # check if config specs have been parsed correctly or skip this config
+  if [ -n "${user}" ] && [ -n "${token}" ]; then
+    # Trigger a normal priority notification
+    curl -s \
+      -F "token=${token}" \
+      -F "user=${user}" \
+      -F "priority=${priority}" \
+      -F "title=${title}" \
+      -F "message=${message}" \
+      "$PUSHOVER_URL"
+  fi
+done
+

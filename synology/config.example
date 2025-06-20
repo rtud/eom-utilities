@@ -23,6 +23,11 @@ FTP_EXTERNAL_PATH="ftp://dipftp.teletrans.ro"
 PUSHOVER_TOKEN=""
 PUSHOVER_USER=""
 PUSHOVER_URL="https://api.pushover.net/1/messages.json"
+# For each Pushover account, add the credentials in the format "user:token" as an item in the below
+#   array.
+PUSHOVER_CONFIGS=(
+  "user:token"
+)
 
 # Projects Setup
 # --------------
