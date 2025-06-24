@@ -32,7 +32,7 @@ for project in "${FTP_PROJECTS[@]}"; do
 
   # check if config specs have been parsed correctly or skip this config
   if [ -z "${folder}" ] || [ -z "${id}" ] || [ -z "${credentials}" ]; then
-    failures+=("[${count}/${#FTP_PROJECTS[@]}] Bad config: ${config[*]}")
+    failures+=("[${count}/${#FTP_PROJECTS[@]}] Bad config: ${config[@]}")
     continue
   fi
 
