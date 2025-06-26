@@ -1,6 +1,10 @@
 # PHT Utilities
 
-This repository is a collection of automated scripts, cronjobs and various utilities that keep the
+This repository is a collection of automated scripts, cronjobs and various utilities that don't fit to a specific initiative/project and keep the lights on.
+
+## Keep in mind
+
+These scripts are most likely not automatically deployed to Production environments. They will likely be copy/pasted or transfered to the respective running environments. That's why it's important that any tweaks and changes that we end up making either on the development machines or in the Production environment itself, we make it a rule to trickle back down in this repository.
 
 ## Synology Sync
 
@@ -14,6 +18,11 @@ The script - [sync.sh](synology/sync.sh) - and the configuration file that has b
 
 ### Good to know
 
+- at this time, to be able to connect via SSH to the Synology server:
+  - you need to plug in via Ethernet cable to the white router in the technical room
+  - you'll need an Administrator's help to have a user w/ admin-level credentials created via the Synology web UI
+  - the router's ip is `192.168.10.250`
+  - the Synology server's SSH port isn't port forwarded to the outside world and we need to keep it like that
 - if you're connecting via SSH to the server, keep in mind:
   - the errors from the script will appear in the `/var/log/bash_err.log` file
 - to test that the script is running server side
